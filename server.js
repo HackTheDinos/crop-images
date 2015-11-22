@@ -10,9 +10,13 @@ var app = express();
 
 const OUTDIR = 'cropped/';
 
+try {
+  fs.mkdirSync(OUTDIR);
+} catch(e) {}
+
 /**
  * Example
- * curl -X POST -H "Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW" -F "image=@376792_10100967765951080_390398556_n.jpg" -F "parts=[{"width": 100, "height": 20, "x": 30, "y": 70}]" 'http://localhost:3000/crop'
+ * curl -F "image=@example/image/kitten.jpg" -F 'parts=[{"width": 315, "height": 250, "x": 591, "y": 217}]' 'http://localhost:3000/crop'
  */
 
 var cpUpload = upload.fields([{ name: 'image', maxCount: 1 }]);
