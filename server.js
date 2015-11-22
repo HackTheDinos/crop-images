@@ -26,10 +26,10 @@ app.post('/crop', cpUpload, function (req, res) {
     if (!clValid) { throw new Error('invalid param parts') }
   }
   catch(e) {
+    //TODO: does not remove uploaded files on error here
     console.error(e);
     return res.status(500).send({error: e.toString()});
   }
-  console.log(fpath);
   CropPieces.cutImgList(fpath, cutList, OUTDIR, (err, result) => {
     if (err) {
       console.error(err);
