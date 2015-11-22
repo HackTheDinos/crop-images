@@ -16,3 +16,5 @@
 ```sh
 curl -F "image=@example/image/kitten.jpg" -F 'parts=[{"width": 315, "height": 250, "x": 591, "y": 217}]' 'http://localhost:3000/crop'
 ```
+
+The cropped image can be found in the `cropped/` folder.
